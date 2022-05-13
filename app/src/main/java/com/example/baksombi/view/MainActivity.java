@@ -1,7 +1,8 @@
-package com.example.baksombi;
+package com.example.baksombi.view;
 
 import android.os.Bundle;
 
+import com.example.baksombi.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
