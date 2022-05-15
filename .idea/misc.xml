@@ -4,9 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2495" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/gradient_theme_blue.xml" value="0.2495" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_baseline_games_24.xml" value="0.24" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.246" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.246" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2495" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.246" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/activity_introductory.xml" value="0.2234375" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_category.xml" value="0.536" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_dashboard.xml" value="0.24010416666666667" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_discover.xml" value="0.25416666666666665" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_home.xml" value="0.24010416666666667" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_my_course.xml" value="0.536" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_notifications.xml" value="0.24010416666666667" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24954710144927536" />
       </map>
     </option>

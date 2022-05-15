@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".view.fragment.MyCourseFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/lbl_your_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/my_course"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#201F1F" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRVCourse"
+            android:paddingTop="10dp"
+            android:layout_below="@+id/lbl_your_course"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</FrameLayout>
