@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        title = findViewById(R.id.lbl_title);
+        setContentView(R.layout.activity_course);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_animal_detail, new AnimalDetailFragment()).commit();
+        /*title = findViewById(R.id.lbl_title);
         ChipNavigationBar navbar = findViewById(R.id.navbar_bottom);
         navbar.setItemSelected(R.id.navigation_home, true);
         title.setText(getString(R.string.title_home));
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new AnimalDetailFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new AnimalDetailFragment()).commit();*/
     }
 
 }

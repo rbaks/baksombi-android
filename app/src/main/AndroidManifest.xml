@@ -14,10 +14,13 @@
         android:theme="@style/Theme.Baksombi"
         tools:targetApi="31">
         <activity
+            android:name=".view.activity.CourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.IntroductoryActivity"
             android:exported="true"
-            tools:ignore="IntentFilterExportedReceiver,MissingClass"
-            android:theme="@style/SplashScreen">
+            android:theme="@style/SplashScreen"
+            tools:ignore="IntentFilterExportedReceiver,MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +29,7 @@
         </activity>
         <activity
             android:name=".view.activity.MainActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
