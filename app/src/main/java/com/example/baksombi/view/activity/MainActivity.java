@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.example.baksombi.R;
 import com.example.baksombi.ui.home.HomeFragment;
+import com.example.baksombi.view.fragment.AnimalDetailFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,6 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     private ChipNavigationBar navbarBottom;
     private TextView title;
     @Override
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         ChipNavigationBar navbar = findViewById(R.id.navbar_bottom);
         navbar.setItemSelected(R.id.navigation_home, true);
         title.setText(getString(R.string.title_home));
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new AnimalDetailFragment()).commit();
     }
 
 }

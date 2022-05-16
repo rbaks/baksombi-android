@@ -7,4 +7,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="discover_daily">Daily Discover</string>
     <string name="my_course">My Courses</string>
+    <string name="ovipare">Ovipare</string>
+    <string name="food">Food</string>
+    <string name="animal_home">Home</string>
+    <string name="read_article">Read Wikipedia</string>
 </resources>
