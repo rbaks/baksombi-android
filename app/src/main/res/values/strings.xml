@@ -11,4 +11,7 @@
     <string name="food">Food</string>
     <string name="animal_home">Home</string>
     <string name="read_article">Read Wikipedia</string>
+    <string name="welcome">Welcome</string>
+    <string name="featured_videos">Videos from our youtube channel</string>
+    <string name="categories">Categories</string>
 </resources>
