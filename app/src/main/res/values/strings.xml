@@ -14,4 +14,7 @@
     <string name="welcome">Welcome</string>
     <string name="featured_videos">Videos from our youtube channel</string>
     <string name="categories">Categories</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="log_out">Log out</string>
 </resources>
