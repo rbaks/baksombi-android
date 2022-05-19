@@ -1,235 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragment.QuizListFragment">
 
-    <LinearLayout
+
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="?colorPrimary"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.75"
-            android:orientation="vertical">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_courses" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center"
-                    android:text="@string/title_profile"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="#131313"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.2"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/img_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/girl_icon" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.8"
-                    android:orientation="vertical"></LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/lbl_profile_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_light"
-                    android:gravity="center"
-                    android:text="TextView"
-                    android:textColor="#201F1F"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:columnCount="3"
-                    android:rowCount="1">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_row="0"
-                        android:layout_rowWeight="1"
-                        android:layout_column="0"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="fill"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/icon_theme"
-                                android:layout_width="70dp"
-                                android:layout_height="73dp"
-                                android:src="@drawable/ic_baseline_color_lens_24"
-                                app:tint="?colorPrimary" />
-
-                            <TextView
-                                android:id="@+id/lbl_theme"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/theme"
-                                android:textColor="?colorPrimary" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_row="0"
-                        android:layout_rowWeight="1"
-                        android:layout_column="1"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="fill"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/icon_language"
-                                android:layout_width="69dp"
-                                android:layout_height="64dp"
-                                android:src="@drawable/ic_baseline_language_24"
-                                app:tint="?colorPrimary" />
-
-                            <TextView
-                                android:id="@+id/lbl_language"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/language"
-                                android:textColor="?colorPrimary" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_row="0"
-                        android:layout_rowWeight="1"
-                        android:layout_column="2"
-                        android:layout_columnWeight="1"
-                        android:layout_gravity="fill"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/icon_logout"
-                                android:layout_width="60dp"
-                                android:layout_height="80dp"
-                                android:src="@drawable/ic_baseline_login_24"
-                                app:tint="?colorPrimary" />
-
-                            <TextView
-                                android:id="@+id/lbl_logout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/log_out"
-                                android:textColor="?colorPrimary" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                </GridLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</FrameLayout>

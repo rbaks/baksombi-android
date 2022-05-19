@@ -21,4 +21,6 @@
     <string name="french">French</string>
     <string name="animal_question">What is this animal?</string>
     <string name="Score">Your score is</string>
+    <string name="discover">Discover</string>
+    <string name="my_courses">My courses</string>
 </resources>
