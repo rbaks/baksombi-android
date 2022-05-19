@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.DiscoverFragment">
 
@@ -31,7 +32,7 @@
             </androidx.appcompat.widget.SearchView>
 
             <FrameLayout
-                android:id="@+id/frameLayout"
+                android:id="@+id/fl_discover_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@id/search_animal"
