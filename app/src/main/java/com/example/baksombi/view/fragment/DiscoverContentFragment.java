@@ -1,5 +1,6 @@
 package com.example.baksombi.view.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.baksombi.R;
+import com.example.baksombi.helper.HttpHelper;
+import com.example.baksombi.model.Category;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +30,7 @@ public class DiscoverContentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private View view;
     public DiscoverContentFragment() {
         // Required empty public constructor
     }
@@ -61,6 +66,32 @@ public class DiscoverContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_discover_content, container, false);
+        this.view = inflater.inflate(R.layout.fragment_discover_content, container, false);
+        DiscoverHandler  handler = new DiscoverHandler();
+        handler.execute();
+        return this.view;
+    }
+
+    public class DiscoverHandler extends AsyncTask<String, String, Category> {
+
+        @Override
+        protected Category doInBackground(String... strings) {
+            try{
+                return new Category().getCategory();
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                //Toast.makeText(DiscoverContentFragment.this.getActivity(),e.getMessage(),Toast.LENGTH_LONG).show();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Category category) {
+            if(category!=null){
+                TextView welcome = DiscoverContentFragment.this.view.findViewById(R.id.lbl_welcome);
+                welcome.setText(category.getStatus().toString());
+            }
+        }
     }
 }
