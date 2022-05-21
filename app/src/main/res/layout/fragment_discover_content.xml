@@ -71,6 +71,7 @@
                 android:textColor="#2B2929" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_category_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -93,10 +94,11 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#2B2929" />
 
-            <VideoView
-                android:id="@+id/videoView"
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/vd_youtube"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
+                app:autoPlay="false"
                 android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>

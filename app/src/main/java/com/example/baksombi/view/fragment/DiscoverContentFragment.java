@@ -3,7 +3,11 @@ package com.example.baksombi.view.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.baksombi.R;
+import com.example.baksombi.adapter.DiscoverCategoryViewAdapter;
 import com.example.baksombi.helper.HttpHelper;
 import com.example.baksombi.model.Category;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +40,7 @@ public class DiscoverContentFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private View view;
+    private RecyclerView recycler;
     public DiscoverContentFragment() {
         // Required empty public constructor
     }
@@ -67,31 +77,26 @@ public class DiscoverContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         this.view = inflater.inflate(R.layout.fragment_discover_content, container, false);
-        DiscoverHandler  handler = new DiscoverHandler();
-        handler.execute();
+        recycler = this.view.findViewById(R.id.rv_category_list);
+        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recycler.setLayoutManager(layoutManager);
+        DiscoverCategoryViewAdapter adapter = new DiscoverCategoryViewAdapter(new Category().getCategories());
+        recycler.setAdapter(adapter);
+        initializeYoutubeVideo();
         return this.view;
     }
 
-    public class DiscoverHandler extends AsyncTask<String, String, Category> {
-
-        @Override
-        protected Category doInBackground(String... strings) {
-            try{
-                return new Category().getCategory();
+    public void initializeYoutubeVideo(){
+        YouTubePlayerView youtubePlayerView = this.view.findViewById(R.id.vd_youtube);
+        getLifecycle().addObserver(youtubePlayerView);
+        youtubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = "fM4m0oMA_Mw";
+                youTubePlayer.loadVideo(videoId, 1);
             }
-            catch(Exception e){
-                e.printStackTrace();
-                //Toast.makeText(DiscoverContentFragment.this.getActivity(),e.getMessage(),Toast.LENGTH_LONG).show();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Category category) {
-            if(category!=null){
-                TextView welcome = DiscoverContentFragment.this.view.findViewById(R.id.lbl_welcome);
-                welcome.setText(category.getStatus().toString());
-            }
-        }
+        });
     }
+
 }
