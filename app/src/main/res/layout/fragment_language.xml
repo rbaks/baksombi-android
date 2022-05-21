@@ -29,6 +29,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cv_english_language"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_row="0"
@@ -99,6 +100,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cv_french_language"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_row="0"

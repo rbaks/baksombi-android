@@ -94,7 +94,7 @@ public class DiscoverContentFragment extends Fragment {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
                 String videoId = "fM4m0oMA_Mw";
-                youTubePlayer.loadVideo(videoId, 1);
+                youTubePlayer.loadVideo(videoId, 0);
             }
         });
     }
