@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">baksombi</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_quiz">Jeux</string>
+    <string name="title_profile">Profil</string>
+    <string name="discover_daily">Découverte journaliere</string>
+    <string name="my_course">Mes Cours</string>
+    <string name="ovipare">Ovipare</string>
+    <string name="food">Nourritures</string>
+    <string name="animal_home">Habitat</string>
+    <string name="read_article">Lire Wiki</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="featured_videos">Video sponsorisé</string>
+    <string name="categories">Categories</string>
+    <string name="theme">Thème</string>
+    <string name="language">Langage</string>
+    <string name="log_out">Se déconnecter</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+    <string name="animal_question">Quel est cet animal?</string>
+    <string name="Score">Ton score est</string>
+    <string name="discover">Découvertes</string>
+    <string name="my_courses">Mes cours</string>
+</resources>

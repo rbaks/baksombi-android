@@ -18,22 +18,34 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static final String PREFERENCE = "preference";
     public static final String THEME = "theme";
     public static final String LANGUAGE = "language";
     private ChipNavigationBar navbar;
+    private int fragmentNavigation;
+    private String fragmentTag;
+    private Fragment savedFragment;
     private TextView title;
+
+    public MainActivity(){
+        this.fragmentNavigation = R.id.navigation_home;
+        this.fragmentTag = new Integer(this.fragmentNavigation).toString();
+        this.savedFragment = new HomeFragment();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeSharedPreferences();
         navbar = findViewById(R.id.navbar_bottom);
-        navbar.setItemSelected(R.id.navigation_home, true);
+        System.out.println("*****Main Activity On created called*******");
+        navbar.setItemSelected(fragmentNavigation, true);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fl_content, new HomeFragment(), new Integer(R.id.navigation_home).toString())
+                .replace(R.id.fl_content, savedFragment, fragmentTag)
+                .addToBackStack(fragmentTag)
                 .commit();
         this.bottomMenuNavigation();
     }
@@ -53,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(int i) {
                 String tag = new Integer(i).toString();
+                fragmentTag = tag;
+                fragmentNavigation = i;
                 Fragment fragment = getSupportFragmentManager().findFragmentByTag(tag);
                 if(fragment == null){
                     switch(i){
@@ -70,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if(fragment!=null){
+                    savedFragment = fragment;
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fl_content, fragment, tag)

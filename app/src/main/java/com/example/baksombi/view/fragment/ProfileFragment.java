@@ -1,7 +1,9 @@
 package com.example.baksombi.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,58 +11,78 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.baksombi.R;
+import com.example.baksombi.view.activity.SubmainActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    View view;
+    CardView theme;
+    CardView language;
+    CardView logout;
 
     public ProfileFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        this.view = inflater.inflate(R.layout.fragment_profile, container, false);
+        this.theme = this.view.findViewById(R.id.cv_theme);
+        this.language = this.view.findViewById(R.id.cv_language);
+        this.logout = this.view.findViewById(R.id.cv_logout);
+        this.initEvents();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return this.view;
+    }
+
+    private void initEvents(){
+        this.language.setOnClickListener(new ProfileMenuListener());
+        this.theme.setOnClickListener(new ProfileMenuListener());
+        this.logout.setOnClickListener(new ProfileMenuListener());
+    }
+
+    public class ProfileMenuListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            if(view.equals(theme)){
+                themeEvent();
+            }
+            if(view.equals(language)){
+                languageEvent();
+            }
+            if(view.equals(logout)){
+                logoutEvent();
+            }
+        }
+
+        private void logoutEvent(){
+
+        }
+
+        private void languageEvent(){
+            Intent intent = new Intent(ProfileFragment.this.getContext(), SubmainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString(SubmainActivity.TITLE, getResources().getString(R.string.language));
+            bundle.putInt(SubmainActivity.FRAGMENT, R.layout.fragment_language);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+        private void themeEvent(){
+            Intent intent = new Intent(ProfileFragment.this.getContext(), SubmainActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString(SubmainActivity.TITLE, getResources().getString(R.string.theme));
+            bundle.putInt(SubmainActivity.FRAGMENT, R.layout.fragment_theme);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 }

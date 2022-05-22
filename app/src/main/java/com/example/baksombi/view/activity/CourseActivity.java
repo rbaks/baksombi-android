@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.baksombi.R;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

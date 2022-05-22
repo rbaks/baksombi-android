@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class IntroductoryActivity extends AppCompatActivity {
+public class IntroductoryActivity extends BaseActivity {
 
 
     @Override
