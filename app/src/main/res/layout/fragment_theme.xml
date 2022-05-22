@@ -22,7 +22,7 @@
                 <ImageButton
                     android:backgroundTint="@color/white"
                     android:layout_margin="22dp"
-                    android:id="@+id/imageView8"
+                    android:id="@+id/img_btn_blue_theme"
                     android:layout_width="wrap_content"
                     android:layout_row="0"
                     android:layout_column="0"
@@ -33,7 +33,7 @@
 
                 <ImageButton
                     android:backgroundTint="@color/white"
-                    android:id="@+id/imageView6"
+                    android:id="@+id/img_btn_pink_theme"
                     android:layout_margin="25dp"
                     android:layout_row="0"
                     android:layout_column="1"
@@ -41,11 +41,11 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/circle_blue" />
+                    android:src="@drawable/circle_pink" />
 
                 <ImageButton
                 android:backgroundTint="@color/white"
-                    android:id="@+id/imageView5"
+                    android:id="@+id/img_btn_orange_theme"
                     android:layout_row="1"
                     android:layout_column="0"
 
@@ -54,19 +54,9 @@
                     android:layout_margin="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/circle_blue" />
+                    android:src="@drawable/circle_orange" />
 
-                <ImageButton
-                    android:backgroundTint="@color/white"
-                    android:id="@+id/imageView4"
-                    android:layout_margin="25dp"
-                    android:layout_row="1"
-                    android:layout_column="1"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/circle_blue" />
+
             </GridLayout>
         </LinearLayout>
         <LinearLayout

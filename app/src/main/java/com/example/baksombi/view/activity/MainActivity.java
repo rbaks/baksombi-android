@@ -1,11 +1,16 @@
 package com.example.baksombi.view.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.baksombi.R;
+import com.example.baksombi.receiver.AppReminderAlarm;
 import com.example.baksombi.view.fragment.HomeFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +21,7 @@ import com.example.baksombi.view.fragment.ProfileFragment;
 import com.example.baksombi.view.fragment.QuizFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 public class MainActivity extends BaseActivity {
@@ -34,13 +40,12 @@ public class MainActivity extends BaseActivity {
         this.savedFragment = new HomeFragment();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeSharedPreferences();
         navbar = findViewById(R.id.navbar_bottom);
-        System.out.println("*****Main Activity On created called*******");
         navbar.setItemSelected(fragmentNavigation, true);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -49,17 +54,7 @@ public class MainActivity extends BaseActivity {
                 .commit();
         this.bottomMenuNavigation();
     }
-    private void initializeSharedPreferences(){
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(!sharedPreferences.contains(THEME)){
-            editor.putInt(THEME, R.style.Theme_Baksombi);
-        }
-        if(!sharedPreferences.contains(LANGUAGE)){
-            editor.putString(LANGUAGE, Locale.getDefault().getDisplayLanguage());
-        }
-        editor.commit();
-    }
+
     private void bottomMenuNavigation(){
         navbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
@@ -95,6 +90,27 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
+    @Override
+    protected void onPause(){
+        initNotification();
+        super.onPause();
+    }
+    private void initNotification(){
+        System.out.println("***************notification init****************");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.add(Calendar.SECOND, 30 );
+        AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
+        Intent intent = new Intent(this, AppReminderAlarm.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 500, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
 
-
+    public void cancelNotification(){
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                getApplicationContext(), 500, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.cancel(pendingIntent);
+    }
 }

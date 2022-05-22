@@ -6,8 +6,14 @@
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2495" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/background_splashscreen.xml" value="0.2495" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/circle_blue.xml" value="0.175" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/circle_orange.xml" value="0.1955" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/circle_orange_selected.xml" value="0.1955" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/circle_pink.xml" value="0.1955" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/circle_pink_selected.xml" value="0.1955" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/cirlce_blue_selected.xml" value="0.175" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/gradient_theme_blue.xml" value="0.2495" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/gradient_theme_orange.xml" value="0.1955" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/gradient_theme_pink.xml" value="0.1955" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_baseline_games_24.xml" value="0.24" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.246" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.246" />
@@ -36,7 +42,7 @@
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_quiz_list.xml" value="0.1834117144078666" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_quiz_result.xml" value="0.536" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_search_result.xml" value="0.18426678067550234" />
-        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_theme.xml" value="0.8800000000000001" />
+        <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/layout/fragment_theme.xml" value="0.3637515842839037" />
         <entry key="..\:/M1/mobile/baksombi-android/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24010416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24954710144927536" />
       </map>

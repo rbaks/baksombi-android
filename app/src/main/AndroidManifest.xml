@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Baksombi"
+        android:theme="@style/Theme.Blue"
         tools:targetApi="31">
         <activity
             android:name=".view.activity.SubmainActivity"
@@ -31,6 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".receiver.AppReminderAlarm"  android:process=":remote"/>
         <activity
             android:name=".view.activity.MainActivity"
             android:label="@string/app_name" />

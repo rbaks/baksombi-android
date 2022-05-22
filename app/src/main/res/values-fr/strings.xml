@@ -22,4 +22,6 @@
     <string name="Score">Ton score est</string>
     <string name="discover">Découvertes</string>
     <string name="my_courses">Mes cours</string>
+    <string name="reminder_title">Rappel de cours</string>
+    <string name="reminder_content">Salut! Ça fait un bout de temps que t\'as pas ouvert l\'app pour apprendre.</string>
 </resources>
