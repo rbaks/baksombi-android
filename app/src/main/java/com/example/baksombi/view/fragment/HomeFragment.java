@@ -19,20 +19,11 @@ import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment {
 
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    ViewPagerAdapter viewPagerAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        viewPager = view.findViewById(R.id.viewPager);
-        viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager(), view.getContext());
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout = view.findViewById(R.id.tl_home);
-        tabLayout.setupWithViewPager(viewPager);
-        // Inflate the layout for this fragment
+        getChildFragmentManager().beginTransaction().replace(R.id.home_content, new DiscoverFragment()).commit();
         return view;
     }
 

@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.baksombi.R;
+import com.example.baksombi.view.fragment.AnimalDetailFragment;
+import com.example.baksombi.view.fragment.CategoryZoomFragment;
 import com.example.baksombi.view.fragment.LanguageFragment;
 import com.example.baksombi.view.fragment.ThemeFragment;
+import com.example.baksombi.view.fragment.WebViewFragment;
 
 import org.w3c.dom.Text;
 
@@ -38,6 +41,7 @@ public class SubmainActivity extends BaseActivity {
         button = findViewById(R.id.btn_back_activity);
         initButtonBack();
         Fragment fragment = getFragment(bundle.getInt(FRAGMENT));
+        fragment.setArguments(bundle);
         if(fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_submain_content, fragment).commit();
         }
@@ -59,10 +63,16 @@ public class SubmainActivity extends BaseActivity {
     private Fragment getFragment(int id){
         Fragment fragment = null;
         switch(id){
+            case R.layout.fragment_category_zoom:
+                return new CategoryZoomFragment();
             case R.layout.fragment_language:
                 return new LanguageFragment();
             case R.layout.fragment_theme:
                 return new ThemeFragment();
+            case R.layout.fragment_animal_detail:
+                return new AnimalDetailFragment();
+            case R.layout.fragment_web_view:
+                return new WebViewFragment();
             default:
                 break;
         }

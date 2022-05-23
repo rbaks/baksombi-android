@@ -2,27 +2,23 @@ package com.example.baksombi.view.activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.baksombi.R;
+import com.example.baksombi.view.fragment.SearchFragment;
 import com.example.baksombi.receiver.AppReminderAlarm;
 import com.example.baksombi.view.fragment.HomeFragment;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
 import com.example.baksombi.view.fragment.ProfileFragment;
-import com.example.baksombi.view.fragment.QuizFragment;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 public class MainActivity extends BaseActivity {
     public static final String PREFERENCE = "preference";
@@ -68,8 +64,8 @@ public class MainActivity extends BaseActivity {
                         case R.id.navigation_home:
                             fragment = new HomeFragment();
                             break;
-                        case R.id.navigation_quiz:
-                            fragment = new QuizFragment();
+                        case R.id.navigation_search:
+                            fragment = new SearchFragment();
                             break;
                         case R.id.navigation_profile:
                             fragment = new ProfileFragment();
@@ -89,28 +85,5 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-    }
-    @Override
-    protected void onPause(){
-        initNotification();
-        super.onPause();
-    }
-    private void initNotification(){
-        System.out.println("***************notification init****************");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.SECOND, 30 );
-        AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
-        Intent intent = new Intent(this, AppReminderAlarm.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 500, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-    }
-
-    public void cancelNotification(){
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                getApplicationContext(), 500, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        alarmManager.cancel(pendingIntent);
     }
 }

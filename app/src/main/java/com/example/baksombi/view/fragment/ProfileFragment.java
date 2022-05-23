@@ -1,6 +1,9 @@
 package com.example.baksombi.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -11,6 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.baksombi.R;
+import com.example.baksombi.dto.LogoutDto;
+import com.example.baksombi.helper.HttpHelper;
+import com.example.baksombi.model.Token;
+import com.example.baksombi.view.activity.AuntheticationActivity;
+import com.example.baksombi.view.activity.MainActivity;
 import com.example.baksombi.view.activity.SubmainActivity;
 
 
@@ -47,7 +55,20 @@ public class ProfileFragment extends Fragment {
         this.theme.setOnClickListener(new ProfileMenuListener());
         this.logout.setOnClickListener(new ProfileMenuListener());
     }
-
+    public class LogoutTask extends AsyncTask<String, String, String>{
+        @Override
+        protected String doInBackground(String... strings) {
+            try{
+                LogoutDto dto = new LogoutDto();
+                dto.setRefreshToken(strings[0]);
+                HttpHelper.getInstance().post("/auth/logout",null, dto);
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            return null;
+        }
+    }
     public class ProfileMenuListener implements View.OnClickListener{
 
         @Override
@@ -64,7 +85,15 @@ public class ProfileFragment extends Fragment {
         }
 
         private void logoutEvent(){
-
+            SharedPreferences preferences = getActivity().getSharedPreferences(MainActivity.PREFERENCE, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            new LogoutTask().execute(preferences.getString(Token.PREF_REFRESH, ""));
+            editor.clear();
+            editor.commit();
+            HttpHelper.getInstance().setToken(null);
+            Intent intent = new Intent(getContext(), AuntheticationActivity.class);
+            getActivity().startActivity(intent);
+            getActivity().finish();
         }
 
         private void languageEvent(){

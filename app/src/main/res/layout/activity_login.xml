@@ -44,27 +44,30 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ipt_username"
+
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ipt_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ipt_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ipt_password"
                     android:layout_width="match_parent"
+
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -82,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:background="#F66F00"
                 android:fontFamily="sans-serif-medium"
-                android:text="Se connecter"
+                android:text="Log In"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 />
 

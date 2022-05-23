@@ -2,7 +2,6 @@ package com.example.baksombi.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.view.LayoutInflater;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +12,6 @@ import com.example.baksombi.view.holder.CategoryViewHolder;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.Locale;
 
 // The adapter class which
 // extends RecyclerView Adapter
@@ -62,19 +60,13 @@ public class DiscoverCategoryViewAdapter
         return new CategoryViewHolder(itemView);
     }
 
-    // Override onBindViewHolder which deals
-    // with the setting of different data
-    // and methods related to clicks on
-    // particular items of the RecyclerView.
     @Override
     public void onBindViewHolder(final CategoryViewHolder holder,
                                  final int position)
     {
-
-        // Set the text of each item of
-        // Recycler view with the list items
+        holder.setId(categories.get(position).getId());
         holder.getLblCategoryName().setText(categories.get(position).getName(this.language));
-        Picasso.get().load(categories.get(position).getImg()).into(holder.getImgCategory());
+        Picasso.get().load(categories.get(position).getImgURL()).into(holder.getImgCategory());
     }
 
     // Override getItemCount which Returns

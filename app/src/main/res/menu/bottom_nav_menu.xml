@@ -11,9 +11,9 @@
         app:cnb_textColor="?colorOnPrimary" />
 
     <item
-        android:id="@+id/navigation_quiz"
-        android:icon="@drawable/ic_baseline_games_24"
-        android:title="@string/title_quiz"
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search"
         app:cnb_iconColor="?colorOnPrimary"
         app:cnb_backgroundColor="?colorPrimary"
         app:cnb_textColor="?colorOnPrimary"/>

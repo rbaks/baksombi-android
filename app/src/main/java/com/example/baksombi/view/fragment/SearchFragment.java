@@ -1,5 +1,7 @@
 package com.example.baksombi.view.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -17,11 +19,12 @@ import android.widget.Toast;
 import com.example.baksombi.R;
 import com.example.baksombi.adapter.SearchResultAdapter;
 import com.example.baksombi.model.Animal;
+import com.example.baksombi.view.activity.MainActivity;
 
 import java.util.List;
 
 
-public class SearchResultFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     View view;
     String language;
@@ -36,7 +39,7 @@ public class SearchResultFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_search_result, container, false);
+        view = inflater.inflate(R.layout.fragment_search, container, false);
         language = view.getContext().getResources().getConfiguration().locale.getDisplayLanguage();
         search = view.findViewById(R.id.search_animal);
         result = view.findViewById(R.id.rv_search);
@@ -71,13 +74,15 @@ public class SearchResultFragment extends Fragment {
 
         @Override
         protected List<Animal> doInBackground(String... strings) {
-           try{
-               return new Animal().getAnimals(strings[0], language);
-           }
-           catch(Exception e){
-               e.printStackTrace();
-               return null;
-           }
+            try{
+                SharedPreferences preferences = getContext().getSharedPreferences(MainActivity.PREFERENCE, Context.MODE_PRIVATE);
+                language = preferences.getString(MainActivity.LANGUAGE,getContext().getResources().getConfiguration().locale.getDisplayLanguage());
+                return new Animal().getAnimals(strings[0], language);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+                return null;
+            }
         }
 
         @Override

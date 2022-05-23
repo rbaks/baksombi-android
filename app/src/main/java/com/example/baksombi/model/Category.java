@@ -2,28 +2,50 @@ package com.example.baksombi.model;
 
 import com.example.baksombi.helper.HttpHelper;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 public class Category {
     private String enName;
     private String frName;
-    private String img;
+    private String imgURL;
+    private String id;
+    private String[] animals;
 
-    private Category(String enName, String frName, String img) {
-        this.enName = enName;
-        this.frName = frName;
-        this.img = img;
+    public String getEnName() {
+        return enName;
+    }
+
+    public String getFrName() {
+        return frName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(String[] animals) {
+        this.animals = animals;
     }
 
     public Category(){}
-    public List<Category> getCategories(){
-        List<Category> categories = new ArrayList<Category>();
-        categories.add(new Category("mammals","mammifères", "https://ik.imagekit.io/etb4k5uezbw/logo__bYXsR8EH.png"));
-        categories.add(new Category("birds","oiseaux", "https://ik.imagekit.io/etb4k5uezbw/logo__bYXsR8EH.png"));
-        categories.add(new Category("fishes","poissons", "https://ik.imagekit.io/etb4k5uezbw/goldfish_OkZHJ8F9ov.png"));
+
+    public List<Category> getCategories() throws Exception{
+        List<Category> categories = Arrays.asList((Category[])HttpHelper.getInstance().get("/categories", Category[].class,null));
         return categories;
+    }
+
+    public Category getCategory() throws Exception{
+        System.out.println(id);
+        return (Category)HttpHelper.getInstance().get("/categories/"+id,Category.class, null);
     }
     public String getName(String language){
         if(language.toLowerCase().equals("fr")){
@@ -40,11 +62,11 @@ public class Category {
         this.frName = frName;
     }
 
-    public String getImg() {
-        return img;
+    public String getImgURL() {
+        return imgURL;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }

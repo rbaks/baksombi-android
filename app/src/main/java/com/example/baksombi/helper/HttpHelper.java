@@ -11,11 +11,21 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HttpHelper {
+    public static final String AUTHORIZATION = "Authorization";
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    private static final String URL = "https://07ad-154-126-100-144.ngrok.io";
+    private static final String URL = "https://baksombi.herokuapp.com/v1";
     private static HttpHelper INSTANCE = null;
     private OkHttpClient httpClient;
     private Gson gson;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     private HttpHelper(){
         this.httpClient = new OkHttpClient();
@@ -34,8 +44,12 @@ public class HttpHelper {
 
     public Object get(String urlConcat, Class classObject, Map<String, String> params) throws Exception{
         HttpUrl.Builder urlBuilder = getUrlBuilder(urlConcat, params);
-        Request request = new Request.Builder()
-                .url(urlBuilder.build())
+        Request.Builder requestBuilder = new Request.Builder()
+                .url(urlBuilder.build());
+        if(token!=null){
+            requestBuilder = requestBuilder.addHeader("Authorization", "Bearer "+token);
+        }
+        Request request = requestBuilder
                 .build();
         Response response = httpClient.newCall(request).execute();
 
@@ -47,10 +61,14 @@ public class HttpHelper {
         int code = response.code();
 
         if(code >= 300){
+            System.out.println(response.body().string());
             throw new Exception(response.message());
         }
-        String str = response.body().string();
-        return gson.fromJson(str, classObject);
+        if(classObject!=null){
+            String str = response.body().string();
+            return gson.fromJson(str, classObject);
+        }
+        return null;
     }
 
     private HttpUrl.Builder getUrlBuilder(String urlConcat, Map<String, String> params) {
@@ -60,14 +78,19 @@ public class HttpHelper {
                 urlBuilder.addQueryParameter(entry.getKey(),entry.getValue());
             }
         }
+
         return urlBuilder;
     }
 
     public Object post(String urlConcat, Class classObject, Object body) throws Exception{
         RequestBody bodyRequest = RequestBody.create(gson.toJson(body), JSON);
         HttpUrl.Builder urlBuilder = getUrlBuilder(urlConcat,null);
-        Request request = new Request.Builder()
-                .url(urlBuilder.build())
+        Request.Builder requestBuilder = new Request.Builder()
+                .url(urlBuilder.build());
+        if(token!=null){
+            requestBuilder = requestBuilder.addHeader("Authorization", "Bearer "+token);
+        }
+        Request request = requestBuilder
                 .post(bodyRequest)
                 .build();
         Response response = httpClient.newCall(request).execute();
