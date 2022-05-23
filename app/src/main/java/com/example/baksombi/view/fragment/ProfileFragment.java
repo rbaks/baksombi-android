@@ -12,11 +12,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.baksombi.R;
 import com.example.baksombi.dto.LogoutDto;
 import com.example.baksombi.helper.HttpHelper;
 import com.example.baksombi.model.Token;
+import com.example.baksombi.model.User;
 import com.example.baksombi.view.activity.AuntheticationActivity;
 import com.example.baksombi.view.activity.MainActivity;
 import com.example.baksombi.view.activity.SubmainActivity;
@@ -28,6 +30,7 @@ public class ProfileFragment extends Fragment {
     CardView theme;
     CardView language;
     CardView logout;
+    TextView name;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -45,9 +48,16 @@ public class ProfileFragment extends Fragment {
         this.theme = this.view.findViewById(R.id.cv_theme);
         this.language = this.view.findViewById(R.id.cv_language);
         this.logout = this.view.findViewById(R.id.cv_logout);
+        this.name = this.view.findViewById(R.id.lbl_profile_name);
+        changeProfileName();
         this.initEvents();
         // Inflate the layout for this fragment
         return this.view;
+    }
+
+    private void changeProfileName(){
+        SharedPreferences preferences = getContext().getSharedPreferences(MainActivity.PREFERENCE,Context.MODE_PRIVATE);
+        this.name.setText(preferences.getString(User.PREF_NAME,""));
     }
 
     private void initEvents(){

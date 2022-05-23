@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.baksombi.R;
 import com.example.baksombi.adapter.DiscoverCategoryViewAdapter;
@@ -27,6 +28,9 @@ public class DiscoverContentFragment extends Fragment {
 
     private RecyclerView recycler;
     private View view;
+    private ProgressBar progressBar;
+    private View container;
+
     public DiscoverContentFragment() {
     }
 
@@ -41,6 +45,9 @@ public class DiscoverContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_discover_content, container, false);
         recycler = this.view.findViewById(R.id.rv_category_list);
+        progressBar = this.view.findViewById(R.id.progressBar);
+        this.container = this.view.findViewById(R.id.container_discover);
+        load();
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),1);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recycler.setLayoutManager(layoutManager);
@@ -49,7 +56,15 @@ public class DiscoverContentFragment extends Fragment {
         initializeYoutubeVideo();
         return this.view;
     }
+    private void load(){
+        container.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+    }
 
+    private void unload(){
+        container.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+    }
     public void initializeYoutubeVideo(){
         YouTubePlayerView youtubePlayerView = this.view.findViewById(R.id.vd_youtube);
         getLifecycle().addObserver(youtubePlayerView);
@@ -78,6 +93,7 @@ public class DiscoverContentFragment extends Fragment {
         @Override
         protected void onPostExecute(List<Category> categories){
             if(categories != null){
+                unload();
                 DiscoverCategoryViewAdapter adapter = new DiscoverCategoryViewAdapter(categories);
                 recycler.setAdapter(adapter);
             }

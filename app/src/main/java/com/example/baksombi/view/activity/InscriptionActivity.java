@@ -24,37 +24,38 @@ import com.example.baksombi.model.Token;
 import com.example.baksombi.model.User;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class AuntheticationActivity extends AppCompatActivity {
+public class InscriptionActivity extends AppCompatActivity {
 
-    Button connect;
+    Button signup;
     EditText username;
     EditText password;
-    TextView newAccount;
+    EditText name;
+    TextView alreadyAccount;
     LinearLayout container;
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isConnected();
-        setContentView(R.layout.activity_login);
-        connect = findViewById(R.id.btn_authenticate);
-        username = findViewById(R.id.ipt_username);
-        password = findViewById(R.id.ipt_password);
-        newAccount = findViewById(R.id.lbl_new_account);
-        container = findViewById(R.id.container_login);
+        setContentView(R.layout.activity_inscription);
+        signup = findViewById(R.id.btn_sign_up);
+        username = findViewById(R.id.ipt_new_username);
+        password = findViewById(R.id.ipt_new_password);
+        name = findViewById(R.id.ipt_new_name);
+        container = findViewById(R.id.container_sign_up);
         progressBar = findViewById(R.id.progressBar);
-        unload();
-        newAccount.setOnClickListener(new View.OnClickListener() {
+        progressBar.setVisibility(View.GONE);
+        alreadyAccount = findViewById(R.id.lbl_already_account);
+        alreadyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                redirectToSignUp();
+                redirectToLogin();
             }
         });
-        connect.setOnClickListener(new View.OnClickListener(){
+        signup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 load();
-                new AuthenticationTask().execute(username.getText().toString(),password.getText().toString());
+                new SignupTask().execute(username.getText().toString(),password.getText().toString(),name.getText().toString());
             }
         });
     }
@@ -68,18 +69,10 @@ public class AuntheticationActivity extends AppCompatActivity {
         container.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
     }
-
-    public void redirectToSignUp(){
-        Intent intent = new Intent(this, InscriptionActivity.class);
+    public void redirectToLogin(){
+        Intent intent = new Intent(this, AuntheticationActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void isConnected(){
-        String connected = getSharedPreferences(MainActivity.PREFERENCE, Context.MODE_PRIVATE).getString(Token.PREF_TOKEN, "");
-        if(!connected.equals("")){
-            redirectToHome();
-        }
     }
 
     public void redirectToHome(){
@@ -87,7 +80,7 @@ public class AuntheticationActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public class AuthenticationTask extends AsyncTask<String, String, Authentication>{
+    public class SignupTask extends AsyncTask<String, String, Authentication>{
 
         @Override
         protected Authentication doInBackground(String... strings) {
@@ -95,15 +88,16 @@ public class AuntheticationActivity extends AppCompatActivity {
                 User user = new User();
                 user.setEmail(strings[0]);
                 user.setPassword(strings[1]);
-                return (Authentication) HttpHelper.getInstance().post("/auth/login", Authentication.class, user);
+                user.setName(strings[2]);
+                return (Authentication) HttpHelper.getInstance().post("/auth/register", Authentication.class, user);
             }
             catch(Exception e){
                 e.printStackTrace();
-                AuntheticationActivity.this.runOnUiThread(new Runnable(){
+                InscriptionActivity.this.runOnUiThread(new Runnable(){
                     @Override
                     public void run() {
                         unload();
-                        Toast.makeText(AuntheticationActivity.this, "Incorrect password or email", Toast.LENGTH_LONG).show();
+                        Toast.makeText(InscriptionActivity.this, "Please provide a valid input", Toast.LENGTH_LONG).show();
                     }
                 });
                 return null;
@@ -113,7 +107,7 @@ public class AuntheticationActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Authentication authentication){
             if(authentication != null){
-                AuthenticationHelper.initAuthentication(AuntheticationActivity.this, authentication);
+                AuthenticationHelper.initAuthentication(InscriptionActivity.this, authentication);
                 redirectToHome();
             }
         }

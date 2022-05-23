@@ -24,5 +24,12 @@
     <string name="discover">Discover</string>
     <string name="my_courses">My courses</string>
     <string name="search">Search</string>
+    <string name="name">Name</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_account">Already have an account?</string>
+    <string name="no_account">No account yet?</string>
 
 </resources>

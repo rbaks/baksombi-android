@@ -55,7 +55,7 @@ public class ThemeFragment extends Fragment {
     private void initializeUI(){
         int themeSelected = getContext()
                 .getSharedPreferences(MainActivity.PREFERENCE, Context.MODE_PRIVATE)
-                .getInt(MainActivity.PREFERENCE, R.id.img_btn_blue_theme);
+                .getInt(MainActivity.THEME, R.id.img_btn_blue_theme);
         changeUISelected(themeSelected);
     }
     private void changeUISelected(int id){

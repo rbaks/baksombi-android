@@ -57,7 +57,7 @@ public class SearchFragment extends Fragment {
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Toast.makeText(view.getContext(), query, Toast.LENGTH_LONG).show();
+
                 new SearchTask().execute(query);
                 return false;
             }

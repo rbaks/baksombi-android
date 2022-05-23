@@ -60,8 +60,7 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Intent intent = new Intent(SearchViewHolder.this.itemView.getContext(), SubmainActivity.class);
                 Bundle bundle = new Bundle();
-                System.out.println(subject.getId());
-                bundle.putString("category_id", subject.getId());
+                bundle.putString("animal_id", subject.getId());
                 bundle.putString(SubmainActivity.TITLE, "");
                 bundle.putInt(SubmainActivity.FRAGMENT, R.layout.fragment_animal_detail);
                 intent.putExtras(bundle);

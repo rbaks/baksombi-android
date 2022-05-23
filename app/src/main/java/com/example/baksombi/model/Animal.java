@@ -165,6 +165,7 @@ public class Animal {
     }
 
     public Animal getAnimal() throws Exception{
+        System.out.println(this.getId());
         return (Animal)HttpHelper.getInstance().get("/animals/"+this.getId(),Animal.class, null);
     }
 }

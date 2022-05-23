@@ -68,7 +68,7 @@ public class BaseActivity extends AppCompatActivity {
     private void initNotification(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.add(Calendar.SECOND, 30 );
+        calendar.add(Calendar.HOUR, 24 );
         AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
         Intent intent = new Intent(this, AppReminderAlarm.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 500, intent, PendingIntent.FLAG_UPDATE_CURRENT);

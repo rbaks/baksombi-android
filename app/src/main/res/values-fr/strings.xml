@@ -25,4 +25,10 @@
     <string name="reminder_title">Rappel de cours</string>
     <string name="reminder_content">Salut! Ça fait un bout de temps que t\'as pas ouvert l\'app pour apprendre.</string>
     <string name="search">Recherche</string>
+    <string name="name">Nom</string>
+    <string name="password">Mot de Passe</string>
+    <string name="log_in">Se Connecter</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="already_account">Deja un compte ?</string>
+    <string name="no_account">Pas encore de compte ?</string>
 </resources>

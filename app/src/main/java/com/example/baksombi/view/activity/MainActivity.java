@@ -31,9 +31,7 @@ public class MainActivity extends BaseActivity {
     private TextView title;
 
     public MainActivity(){
-        this.fragmentNavigation = R.id.navigation_home;
-        this.fragmentTag = new Integer(this.fragmentNavigation).toString();
-        this.savedFragment = new HomeFragment();
+
     }
 
 
@@ -41,8 +39,11 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.fragmentNavigation = R.id.navigation_home;
+        this.fragmentTag = new Integer(this.fragmentNavigation).toString();
+        this.savedFragment = new HomeFragment();
         navbar = findViewById(R.id.navbar_bottom);
-        navbar.setItemSelected(fragmentNavigation, true);
+        navbar.setItemSelected(R.id.navigation_home, true);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fl_content, savedFragment, fragmentTag)
@@ -51,6 +52,11 @@ public class MainActivity extends BaseActivity {
         this.bottomMenuNavigation();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        navbar.setItemSelected(fragmentNavigation, true);
+    }
     private void bottomMenuNavigation(){
         navbar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
             @Override
